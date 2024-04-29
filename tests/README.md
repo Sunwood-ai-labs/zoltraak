@@ -1,5 +1,5 @@
 
-![](../assets/images/test_icon.jpeg)
+![](https://raw.githubusercontent.com/Sunwood-ai-labs/zoltraak/celsius/assets/images/test_icon.jpeg)
 
 # テスト方法
 
