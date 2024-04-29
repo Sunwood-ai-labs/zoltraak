@@ -1,0 +1,1 @@
+conda activate zoltraak_celsius_dev

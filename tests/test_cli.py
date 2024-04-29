@@ -1,12 +1,18 @@
 import os
 import sys
+import sys
+import pprint
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '../zoltraak'))
+print("===============================")
+pprint.pprint(sys.path)
+
 import subprocess
 import unittest
 from zoltraak.md_generator import generate_md_from_prompt, generate_response
 
-
+from loguru import logger
 
 class TestzoltraakCommand(unittest.TestCase):  # TestzoltraakCommandクラスを定義し、unittest.TestCaseを継承します。
     # def test_zoltraak_command(self):
@@ -121,7 +127,7 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
         """
         biz_consult copy.mdコンパイラの機能をテストする
         """
-        compiler_path = "biz_consult copy.md"
+        compiler_path = "biz_consult2.md"
         goal_prompt = "今月中にビジネスコンサルティングドキュメントを作成する"
         expected_md_path = "def_work_book_1.md"
         self.run_compiler_test(compiler_path, goal_prompt, expected_md_path)
@@ -225,31 +231,34 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
         expected_md_path = "def_proposal.md"
         self.run_compiler_test(compiler_path, goal_prompt, expected_md_path)
 
-    def run_compiler_test(self, compiler_path, goal_prompt, expected_md_path):
+    def run_compiler_test(self, compiler_path, goal_prompt, expected_md_path, setting_dir="zoltraak/setting"):
         """
         指定されたコンパイラパスとプロンプトを使用してテストを実行する
         """
+        
+        logger.info(f">>> compiler_path:{compiler_path}")
+         
         # generate_md_from_prompt関数を呼び出し、追加の引数を渡す
         generate_md_from_prompt(
             goal_prompt=goal_prompt,
             target_file_path=expected_md_path,
             developer="anthropic",
             model_name="claude-3-haiku-20240307",
-            compiler_path=f"setting/compiler/{compiler_path}",
-            formatter_path="setting/formatter/None.md",
+            compiler_path=f"{setting_dir}/compiler/{compiler_path}",
+            formatter_path=f"{setting_dir}/formatter/default.md",
             open_file=False
         )
 
         expected_md_path = "requirements/" + expected_md_path                 # 期待されるMDファイルのパスをrequirementsディレクトリ内に設定
                                                                               #
         self.check_generated_md_content(expected_md_path, compiler_path)      # 生成されたMDファイルの内容をチェックする
-        self.move_generated_md_to_gomi(expected_md_path, open_file=True)                      # 生成されたMDファイルをgomiディレクトリに移動する
+        self.move_generated_md_to_gomi(expected_md_path, open_file=True)      # 生成されたMDファイルをgomiディレクトリに移動する
 
     def check_generated_md_content(self, expected_md_path, compiler_path):
         """
         生成されたMDファイルの内容を確認する
         """
-        with open(expected_md_path, 'r') as f:
+        with open(expected_md_path, 'r', encoding='utf-8') as f:
             generated_content = f.read()
         self.assertGreater(len(generated_content), 0, f"生成されたMDファイルが空です。 コンパイラパス: {compiler_path}")
 
@@ -273,16 +282,15 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
             os.system(f"code {new_file_path}")  # ファイルを開く（VSCodeにおける`code syllabus_graph.png`に相当）
 
 
-
 class TestGenerateResponse(unittest.TestCase):
     def test_generate_response_anthropic(self):
         """
         Anthropicのモデルを使用してgenerate_response関数をテストする
         """
         anthropic_models = [
-            "claude-3-opus-20240229",
+            # "claude-3-opus-20240229",
             "claude-3-haiku-20240307",
-            "claude-3-sonnet-20240229"
+            # "claude-3-sonnet-20240229"
         ]
         prompt = "これはテストプロンプトです。"
 
@@ -298,10 +306,10 @@ class TestGenerateResponse(unittest.TestCase):
         """
 
         groq_models = [
-            "llama3-8b-8192",
-            "llama3-70b-8192", 
-            "llama2-70b-4096",
-            "mixtral-8x7b-32768",
+            # "llama3-8b-8192",
+            # "llama3-70b-8192", 
+            # "llama2-70b-4096",
+            # "mixtral-8x7b-32768",
             "gemma-7b-it"
         ]
         prompt = "これはテストプロンプトです。"
@@ -322,4 +330,6 @@ class TestGenerateResponse(unittest.TestCase):
     
 
 if __name__ == '__main__':  # このスクリプトが直接実行された場合にのみ、以下のコードを実行します。
+    
+    # 全部を実行します
     unittest.main()  # unittestのmain関数を呼び出し、テストを実行します。

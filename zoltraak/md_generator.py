@@ -44,8 +44,8 @@ open_file: {open_file}
         open_file (bool): ファイルを開くかどうかのフラグ（デフォルトはTrue）
     """
     prompt = create_prompt(goal_prompt, compiler_path, formatter_path)        # プロンプトを作成
-    print("goal_prompt", goal_prompt)
-    print("promtp", prompt)
+    print("goal_prompt:", goal_prompt)
+    print("promt:", prompt)
     response = generate_response(                                             # developerごとの分岐を関数化して応答を生成
         developer, model_name, prompt                                         # - デベロッパー、モデル名、プロンプトを引数に渡す
     )                                                                         #
@@ -102,6 +102,10 @@ def create_prompt_and_get_response_anthropic(model, prompt, max_tokens, temperat
     Returns:
         str: 生成されたテキスト
     """
+    
+    
+    print(f">>>>>>> prompt:{prompt}")
+    
     client = anthropic.Anthropic(api_key=anthropic_api_key)  # Anthropic APIクライアントを作成
     response = client.messages.create(
         model=model,
@@ -155,7 +159,7 @@ def create_prompt(goal_prompt, compiler_path="setting/compiler/dev_obj.md", form
     formatter = get_formatter(formatter_path)
 
     if os.path.exists(compiler_path):  # プロンプトファイルが存在する場合
-        with open(compiler_path, "r") as file:  # - プロンプトファイルを読み込みモードで開く
+        with open(compiler_path, "r", encoding='utf-8') as file:  # - プロンプトファイルを読み込みモードで開く
             prompt = file.read().format(
                 prompt=goal_prompt
             )  # -- プロンプトファイルの内容を読み込み、goal_promptを埋め込む
@@ -181,7 +185,7 @@ def get_formatter(formatter_path):
         formatter = ""  # - フォーマッタを空文字列に設定
     else:  # フォーマッタパスが指定されている場合
         if os.path.exists(formatter_path):  # -- フォーマッタファイルが存在する場合
-            with open(formatter_path, "r") as file:  # --- フォーマッタファイルを読み込みモードで開く
+            with open(formatter_path, "r", encoding='utf-8') as file:  # --- フォーマッタファイルを読み込みモードで開く
                 formatter = file.read()  # ---- フォーマッタの内容を読み込む
         else:  # -- フォーマッタファイルが存在しない場合
             print(f"フォーマッタファイル {formatter_path} が見つかりません。")  # --- エラーメッセージを表示
@@ -202,7 +206,7 @@ def save_md_content(md_content, target_file_path):
     os.makedirs(requirements_dir, exist_ok=True)                              # - requirements/ディレクトリを作成（既に存在する場合は何もしない）
     target_file_name = os.path.basename(target_file_path)                     # - ターゲットファイルのファイル名を取得
     target_file_path = os.path.join(requirements_dir, target_file_name)       # - requirements/ディレクトリとファイル名を結合してターゲットファイルのパスを生成
-    with open(target_file_path, "w") as target_file:                          # ターゲットファイルを書き込みモードで開く
+    with open(target_file_path, "w", encoding='utf-8') as target_file:                          # ターゲットファイルを書き込みモードで開く
         target_file.write(md_content)                                         # - 生成された要件定義書の内容をファイルに書き込む
 
 def print_generation_result(target_file_path, open_file=True):
