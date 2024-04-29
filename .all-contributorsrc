@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "dai-motoki",
+      "name": "DAISUKE MOTOKI",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58665894?v=4",
+      "profile": "https://github.com/dai-motoki",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "projectName": "zoltraak",
+  "projectOwner": "dai-motoki"
+}

@@ -1,2 +1,0 @@
-pythonはblack styleでフォーマッタ。
-コメントアウトは簡潔に

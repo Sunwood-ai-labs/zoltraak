@@ -231,7 +231,7 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
         expected_md_path = "def_proposal.md"
         self.run_compiler_test(compiler_path, goal_prompt, expected_md_path)
 
-    def run_compiler_test(self, compiler_path, goal_prompt, expected_md_path, setting_dir="zoltraak/setting"):
+    def run_compiler_test(self, compiler_path, goal_prompt, expected_md_path, setting_dir="zoltraak/grimoires"):
         """
         指定されたコンパイラパスとプロンプトを使用してテストを実行する
         """
@@ -245,7 +245,7 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
             developer="anthropic",
             model_name="claude-3-haiku-20240307",
             compiler_path=f"{setting_dir}/compiler/{compiler_path}",
-            formatter_path=f"{setting_dir}/formatter/default.md",
+            formatter_path=f"{setting_dir}/formatter/None.md",
             open_file=False
         )
 
