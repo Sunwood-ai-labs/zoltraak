@@ -14,6 +14,9 @@ from zoltraak.md_generator import generate_md_from_prompt, generate_response
 
 from loguru import logger
 
+from dotenv import load_dotenv
+load_dotenv()  # .envファイルから環境変数を読み込む
+
 class TestzoltraakCommand(unittest.TestCase):  # TestzoltraakCommandクラスを定義し、unittest.TestCaseを継承します。
     # def test_zoltraak_command(self):
     #     """
@@ -245,8 +248,9 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
             developer="anthropic",
             model_name="claude-3-haiku-20240307",
             compiler_path=f"{setting_dir}/compiler/{compiler_path}",
-            formatter_path=f"{setting_dir}/formatter/None.md",
-            open_file=False
+            formatter_path=f"{setting_dir}/formatter/default.md",
+            open_file=False,
+            auto_run=True
         )
 
         expected_md_path = "requirements/" + expected_md_path                 # 期待されるMDファイルのパスをrequirementsディレクトリ内に設定

@@ -13,6 +13,11 @@ load_dotenv()  # .envファイルから環境変数を読み込む
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")  # 環境変数からAnthropicのAPI keyを取得
 groq_api_key = os.getenv("GROQ_API_KEY")  # 環境変数からGroqのAPI keyを取得
 
+def prompt_user(auto_run):
+    if auto_run:
+        return 'y'  # 自動実行する場合は 'y' を返す
+    else:
+        return input("\033[32m魔法術式\033[0mから\033[33m領域術式\033[0mを実行しますか？ (y/n): ")
 
 def generate_md_from_prompt(
     goal_prompt,
@@ -23,6 +28,7 @@ def generate_md_from_prompt(
     formatter_path=None,
     language=None, #汎用言語指定
     open_file=True,  # ファイルを開くかどうかのフラグを追加
+    auto_run=False
 ):
     """
     promptから要件定義書（マークダウンファイル）を生成する関数
@@ -79,7 +85,7 @@ def generate_md_from_prompt(
     spinner_thread.join()                                               # スピナーの表示を終了
     md_content = response.strip()                                       # 生成された要件定義書の内容を取得し、前後の空白を削除
     save_md_content(md_content, target_file_path)                       # 生成された要件定義書の内容をファイルに保存
-    print_generation_result(target_file_path, open_file)                # 生成結果を出力し、open_fileフラグに応じてファイルを開く
+    print_generation_result(target_file_path, open_file, auto_run)                # 生成結果を出力し、open_fileフラグに応じてファイルを開く
 
 def show_spinner(done, goal):
     """スピナーを表示する関数
@@ -287,7 +293,9 @@ def save_md_content(md_content, target_file_path):
     with open(target_file_path, "w", encoding = "utf-8") as target_file:                          # ターゲットファイルを書き込みモードで開く
         target_file.write(md_content)                                         # - 生成された要件定義書の内容をファイルに書き込む
 
-def print_generation_result(target_file_path, open_file=True):
+
+
+def print_generation_result(target_file_path, open_file=True, auto_run=False):
     """
     要件定義書の生成結果を表示する関数
 
@@ -298,17 +306,11 @@ def print_generation_result(target_file_path, open_file=True):
     req = "requirements"
     target_file_path = f"{req}/{target_file_path}"
     print(f"\033[32m魔法術式を構築しました: {target_file_path}\033[0m")  # 要件定義書の生成完了メッセージを緑色で表示
-
-
-
-
-
-
     
     # ユーザーに要件定義書からディレクトリを構築するかどうかを尋ねる
-    build_directory = input("\033[32m魔法術式\033[0mから\033[33m領域術式\033[0mを実行しますか？ (y/n): ")
+    build_directory = prompt_user(auto_run)
     
-    if build_directory.lower() == 'y':
+    if (build_directory.lower() == 'y'):
         # ユーザーがyと答えた場合、zoltraakコマンドを実行してディレクトリを構築
         done = False  # スピナーの終了フラグを追加
         spinner_thread = threading.Thread(  # スピナーを表示するスレッドを作成し、終了フラグとgoalを渡す

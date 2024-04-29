@@ -29,6 +29,11 @@ python tests/test_cli.py
 pytest tests/test_cli.py::TestzoltraakCommand
 ```
 
+```bash
+pytest tests/test_cli.py::TestGenerateResponse
+pytest tests/test_cli.py::TestCompilerFunctionality
+```
+
 この方法では、`TestzoltraakCommand`クラス内のすべてのテストメソッドが実行されます。
 
 ### テストメソッドを指定してテストを実行
