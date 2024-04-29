@@ -330,6 +330,5 @@ class TestGenerateResponse(unittest.TestCase):
     
 
 if __name__ == '__main__':  # このスクリプトが直接実行された場合にのみ、以下のコードを実行します。
-    
     # 全部を実行します
     unittest.main()  # unittestのmain関数を呼び出し、テストを実行します。
