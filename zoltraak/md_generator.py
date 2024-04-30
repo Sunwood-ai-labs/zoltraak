@@ -9,6 +9,8 @@ import threading
 import time
 import sys
 
+from litellm import completion
+
 load_dotenv()  # .envファイルから環境変数を読み込む
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")  # 環境変数からAnthropicのAPI keyを取得
 groq_api_key = os.getenv("GROQ_API_KEY")  # 環境変数からGroqのAPI keyを取得
@@ -138,7 +140,8 @@ def generate_response(developer, model_name, prompt):
         response = create_prompt_and_get_response_groq(model_name, prompt)
     elif developer == "anthropic":  # Anthropicを使用する場合
         response = create_prompt_and_get_response_anthropic(model_name, prompt, 4000, 0.7)
-    
+    elif developer == "litellm":  # litellmを使用する場合
+        response = create_prompt_and_get_response_litellm(model_name, prompt)
     else:  # 想定外のデベロッパーの場合
         raise ValueError(
             f"サポートされていないデベロッパー: {developer}。"
@@ -173,6 +176,14 @@ def create_prompt_and_get_response_anthropic(model, prompt, max_tokens, temperat
     )
     return response.content[0].text.strip()
 
+
+def create_prompt_and_get_response_litellm(model_name, prompt):
+    response = completion(
+        model=model_name, 
+        messages=[{ "content": prompt,"role": "user"}], 
+        api_base="http://localhost:11434",
+    )
+    return response['choices'][0].message.content.strip()
 
 def create_prompt_and_get_response_groq(model, prompt):
     """
