@@ -1,5 +1,5 @@
 ![](assets/videos/zoltraak2_smooth_high_quality.gif)
-<h1>創造魔法 Zoltraak</h1>
+<h1>創造魔法 Zoltraak ～celsius～</h1>
 <p>
 Zoltraakは本格的な魔法時代の始まりを象徴する強大な創造魔法の名です。
 
