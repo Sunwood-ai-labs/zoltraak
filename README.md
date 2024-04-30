@@ -17,10 +17,10 @@ Zoltraakは本格的な魔法時代の始まりを象徴する強大な創造魔
 <a href="https://github.com/dai-motoki/zoltraak" alt="GitHub issues by-label">
 <img src="https://img.shields.io/github/issues/XiaogangHe/InVEST-Cities-in-Nature" /></a> -->
 
-# 貢献者
+## 貢献者
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -30,23 +30,55 @@ Zoltraakは本格的な魔法時代の始まりを象徴する強大な創造魔
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/dai-motoki"><img src="https://avatars.githubusercontent.com/u/58665894?v=4?s=100" width="100px;" alt="DAISUKE MOTOKI"/><br /><sub><b>DAISUKE MOTOKI</b></sub></a><br /><a href="#code-dai-motoki" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ThePioneerJP"><img src="https://avatars.githubusercontent.com/u/116901962?v=4?s=100" width="100px;" alt="The Pioneer"/><br /><sub><b>The Pioneer</b></sub></a><br /><a href="#code-ThePioneerJP" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/hiroki1014"><img src="https://avatars.githubusercontent.com/u/39159218?v=4?s=100" width="100px;" alt="Hiroki Koshika"/><br /><sub><b>Hiroki Koshika</b></sub></a><br /><a href="#code-hiroki1014" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/UnagiTabetai"><img src="https://avatars.githubusercontent.com/u/143519346?v=4?s=100" width="100px;" alt="MARUMO"/><br /><sub><b>MARUMO</b></sub></a><br /><a href="#code-UnagiTabetai" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://hamaruki.com/"><img src="https://avatars.githubusercontent.com/u/108736814?v=4?s=100" width="100px;" alt="Maki"/><br /><sub><b>Maki</b></sub></a><br /><a href="#code-Sunwood-ai-labs" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/onikan27"><img src="https://avatars.githubusercontent.com/u/74908945?v=4?s=100" width="100px;" alt="akino"/><br /><sub><b>akino</b></sub></a><br /><a href="#code-onikan27" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sarukun99"><img src="https://avatars.githubusercontent.com/u/4081854?v=4?s=100" width="100px;" alt="tomoyuki enomoto"/><br /><sub><b>tomoyuki enomoto</b></sub></a><br /><a href="#code-sarukun99" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/umayado17"><img src="https://avatars.githubusercontent.com/u/40725757?v=4?s=100" width="100px;" alt="umayado17"/><br /><sub><b>umayado17</b></sub></a><br /><a href="#code-umayado17" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
 
-
-コントリビュータの追加方法はこちら
-→ 
-[クリック](#コントリビューターの追加方法)
-
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
+コントリビューターの追加方法に関する詳細は以下のリンクを参照してください。
+[コントリビューターの追加方法](#コントリビューターの追加方法)
+
 
 Zoltraakは自然言語を実行言語に変換するプロンプトコンパイラシステムを採用し、数語の呪文から起動術式を用いて複雑な術式を展開しこれを即時実行可能な古代システム語へとコンパイルします。これにより術師の数語の呪文は強力な言霊の数々を織り込んだ魔法陣を通り魔法の範囲と威力を大幅に向上させることが可能となります。また詠唱、無詠唱での高速な創造魔法を実現可能とします。これにより相対する敵よりも圧倒的に高速かつ柔軟な術の発動を可能とします。
 
 以下将来的にTODO: 
 独自言語呪文や暗号呪文へのコンパイルも可能とするため周りから呪文を抜き取られリバースエンジニアリングされる心配もありません。 微調整の後それを古代語として圧縮し呪文を秘匿する事も可能です。 また、独自言語を用い数語微修正するのみで、実行言語が瞬時に変わり術が発動します。
+
+
+## ディストリビューション
+
+- zoltraak-docker
+
+https://github.com/Sunwood-ai-labs/zoltraak_docker
+
+- Streamlit
+
+https://x.com/habatakurikei/status/1784561693705560419 
+
+https://twitter.com/habatakurikei 
+https://twitter.com/habatakurikei
+
+
+- hagging face 
+
+https://t.co/TlEq204NBG
+https://x.com/hokazuya/status/1784887255154282524
+
+
 
 ## 他言語（Other languages）
 他言語版readmeは以下からご覧になれます。現在サポートしているのは以下の言語です。
@@ -180,82 +212,30 @@ zoltraak "今月中にオブジェクト指向設計を用いて、多機能在�
 
 1. リポジトリをクローンします:
    ```
-   git clone https://github.com/yourusername/Zoltraak.git
+   git clone https://github.com/dai-motoki/zoltraak.git
    ```
 
 2. プロジェクトディレクトリに移動します:
    ```
-   cd Zoltraak
+   cd zoltraak
    ```
 
-3. 必要な依存関係をインストールします:
-   ```
-   pip install -r requirements.txt
-   ```
-
-4. Anthropic APIキーを設定します:
-   - プロジェクトのルートディレクトリに`.env`ファイルを作成します。
-   - 以下の行を`.env`ファイルに追加し、`YOUR_API_KEY`を実際のAnthropicのAPIキーに置き換えます:
-     ```
-     ANTHROPIC_API_KEY=YOUR_API_KEY
-     ```
-
-
-
-
-
-
-
-
-# pypiパッケージをローカル環境で開発するには以下の手順を踏むのが一般的です。
-
-1. 仮想環境の作成
+3. 仮想環境の作成
 まず、パッケージ開発用の独立した仮想環境を作成します。これにより、システム全体のPythonとは分離された環境で開発できます。
 
 ```bash
 python -m venv zoltraak-dev
 source zoltraak-dev/bin/activate  # Linuxの場合
-mypackage-env\Scripts\activate.bat  # Windowsの場合 
+zoltraak-env\Scripts\activate.bat  # Windowsの場合 
 ```
 
-2. 必要なパッケージのインストール
+4. 必要なパッケージのインストール
 開発に必要な依存パッケージをインストールします。例えば、`setuptools`と`wheel`は最低限必要です。
 
 ```bash
 pip install setuptools wheel
 ```
 
-3. パッケージのディレクトリ構成
-以下のような基本的なディレクトリ構成でパッケージを作成します。
-
-```
-mypackage/
-    mypackage/
-        __init__.py
-        module1.py
-        module2.py
-    tests/
-        test_module1.py
-        test_module2.py
-    setup.py
-    README.md
-```
-
-4. `setup.py`の作成
-パッケージのメタデータや依存関係を記述した`setup.py`ファイルを作成します。例えば以下のようになります。
-
-```python
-from setuptools import setup, find_packages
-
-setup(
-    name='mypackage',
-    version='0.1.0',
-    packages=find_packages(),
-    install_requires=[
-        # 依存パッケージ
-    ],
-)
-```
 
 5. パッケージのインストール
 開発中のパッケージを仮想環境にインストールします。
@@ -266,25 +246,17 @@ pip install -e .
 
 これで、仮想環境内でパッケージを使用したり、変更を加えたりできるようになります。
 
-6. パッケージの使用とテスト
-パッケージの機能を使用したり、ユニットテストを実行したりして、開発を進めます。
 
-7. ビルドと配布
-完成したパッケージは以下のコマンドでビルドし、PyPIに公開できます。
-
-```bash
-python setup.py sdist bdist_wheel
-twine upload dist/*
-```
-
-以上が、ローカル環境でのpypiパッケージ開発の基本的な流れです。仮想環境を使い、適切なディレクトリ構成と`setup.py`を用意することがポイントです。
+4. Anthropic APIキーを設定します:
+   - プロジェクトのルートディレクトリに`.env`ファイルを作成します。
+   - 以下の行を`.env`ファイルに追加し、`YOUR_API_KEY`を実際のAnthropicのAPIキーに置き換えます:
+     ```
+     ANTHROPIC_API_KEY=YOUR_API_KEY
+     ```
 
 
 
-
-
-
-### 追加コマンド
+### 追加コマンド（以下はオーナーのみ）
 
 
 update_and_upload.sh
