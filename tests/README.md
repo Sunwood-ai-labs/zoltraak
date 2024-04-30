@@ -39,6 +39,8 @@ pytest tests/test_cli.py::TestCompilerFunctionality
 ### テストメソッドを指定してテストを実行
 
 ```bash
+pytest tests/test_cli.py::TestCompilerFunctionality::test_biz_consult_copy_compiler
+
 pytest tests/test_cli.py::TestzoltraakCommand::test_missing_md_file_argument
 pytest tests/test_cli.py::TestzoltraakCommand::test_prompt_argument
 pytest tests/test_cli.py::TestzoltraakCommand::test_text_input
