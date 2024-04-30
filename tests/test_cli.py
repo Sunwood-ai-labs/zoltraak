@@ -3,8 +3,21 @@ import sys
 import sys
 import pprint
 
+from dotenv import load_dotenv
+load_dotenv()  # .envファイルから環境変数を読み込む
+
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '../zoltraak'))
+
+# 環境変数からVS Codeのパスを取得する
+vscode_path = os.getenv("VSCODE_PATH")
+
+if vscode_path:
+    # 既存のPATHに追加する
+    os.environ["PATH"] += os.pathsep + vscode_path
+else:
+    print("VSCODE_PATHが設定されていません")
+    
 print("===============================")
 pprint.pprint(sys.path)
 
@@ -14,8 +27,7 @@ from zoltraak.md_generator import generate_md_from_prompt, generate_response
 
 from loguru import logger
 
-from dotenv import load_dotenv
-load_dotenv()  # .envファイルから環境変数を読み込む
+
 
 class TestzoltraakCommand(unittest.TestCase):  # TestzoltraakCommandクラスを定義し、unittest.TestCaseを継承します。
     # def test_zoltraak_command(self):
@@ -234,7 +246,16 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
         expected_md_path = "def_proposal.md"
         self.run_compiler_test(compiler_path, goal_prompt, expected_md_path)
 
-    def run_compiler_test(self, compiler_path, goal_prompt, expected_md_path, setting_dir="zoltraak/grimoires"):
+    def test_litellm_model_compiler(self):
+        """
+        general_reqdef.mdコンパイラの機能をテストする
+        """
+        compiler_path = "dev_obj.md"
+        goal_prompt = "ブラウザでできるたまごっちみたいなドット絵風の育成ゲーム"
+        expected_md_path = "def_inventory.md"
+        self.run_compiler_test(compiler_path, goal_prompt, expected_md_path, developer="litellm", model_name="ollama/gemma")
+
+    def run_compiler_test(self, compiler_path, goal_prompt, expected_md_path, setting_dir="zoltraak/grimoires", developer="anthropic", model_name="claude-3-haiku-20240307"):
         """
         指定されたコンパイラパスとプロンプトを使用してテストを実行する
         """
@@ -245,8 +266,8 @@ class TestCompilerFunctionality(unittest.TestCase):  # クラス名をTestCompil
         generate_md_from_prompt(
             goal_prompt=goal_prompt,
             target_file_path=expected_md_path,
-            developer="anthropic",
-            model_name="claude-3-haiku-20240307",
+            developer=developer,
+            model_name=model_name,
             compiler_path=f"{setting_dir}/compiler/{compiler_path}",
             formatter_path=f"{setting_dir}/formatter/default.md",
             open_file=False,
