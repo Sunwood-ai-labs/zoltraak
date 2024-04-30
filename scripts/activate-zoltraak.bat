@@ -1,1 +1,1 @@
-conda activate zoltraak
+conda activate zoltraak_dev
