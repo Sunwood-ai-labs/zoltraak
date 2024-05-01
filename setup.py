@@ -26,6 +26,7 @@ setup(
         "wheel",
         'art',
         'loguru',
+        "diagrams"
     ],
     package_data={
         '': ['*.txt', '*.md', '*.json', '*.csv', '*.yaml', '*.yml'],
